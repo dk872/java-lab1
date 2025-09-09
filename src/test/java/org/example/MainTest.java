@@ -42,24 +42,6 @@ class MainTest {
     }
 
     @Test
-    void testEmptyString() {
-        String[] result = Main.findWordWithMinUniqueChars("");
-        assertEquals("No words entered", result[0]);
-    }
-
-    @Test
-    void testOnlySpaces() {
-        String[] result = Main.findWordWithMinUniqueChars("     ");
-        assertEquals("No words entered", result[0]);
-    }
-
-    @Test
-    void testNullInput() {
-        String[] result = Main.findWordWithMinUniqueChars(null);
-        assertEquals("No words entered", result[0]);
-    }
-
-    @Test
     void testMultipleSpacesBetweenWords() {
         String[] result = Main.findWordWithMinUniqueChars("   hi      hello     world   ");
         assertEquals("hi", result[0]);

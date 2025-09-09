@@ -6,8 +6,18 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter a string of words:");
-        String input = scanner.nextLine();
+        String input;
+
+        while (true) {
+            System.out.println("Enter a string of words:");
+            input = scanner.nextLine();
+
+            if (input != null && !input.trim().isEmpty()) {
+                break;
+            }
+
+            System.out.println("Input is empty. Please try again.");
+        }
 
         String[] result = findWordWithMinUniqueChars(input);
         System.out.println("Result:");
@@ -19,15 +29,7 @@ public class Main {
     }
 
     public static String[] findWordWithMinUniqueChars(String input) {
-        if (input == null || input.trim().isEmpty()) {
-            return new String[]{"No words entered"};
-        }
-
         String[] words = input.trim().split("\\s+");
-
-        if (words.length == 0 || (words.length == 1 && words[0].isEmpty())) {
-            return new String[]{"No words entered"};
-        }
 
         String minWord = words[0];
         int minCharsCount = countUniqueChars(minWord);
