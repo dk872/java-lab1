@@ -45,23 +45,15 @@ public class Main {
 
     private static int countUniqueChars(String word) {
         char[] chars = word.toCharArray();
-        char[] unique = new char[chars.length];
-        int uniqueCount = 0;
+        boolean[] seen = new boolean[65536];
+        int count = 0;
 
         for (char c : chars) {
-            boolean isUnique = true;
-            for (int j = 0; j < uniqueCount; j++) {
-                if (c == unique[j]) {
-                    isUnique = false;
-                    break;
-                }
-            }
-            if (isUnique) {
-                unique[uniqueCount] = c;
-                uniqueCount++;
+            if (!seen[c]) {
+                seen[c] = true;
+                count++;
             }
         }
-
-        return uniqueCount;
+        return count;
     }
 }
